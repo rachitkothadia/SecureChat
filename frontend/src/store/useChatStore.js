@@ -91,9 +91,9 @@ export const useChatStore = create((set, get) => ({
       if (hasImage && !hasText) {
         console.log("🖼️ Only image detected, bypassing ML check...");
       } else if (hasText) {
-        console.log("🔍 Sending text for harmful content check...");
-        const checkResponse = await axios.post(
-          "http://127.0.0.1:5002/predict",
+        console.log("🔍 Sending text for harmful content check via backend proxy...");
+        const checkResponse = await axiosInstance.post(
+          "/api/ml/predict",
           { message: messageData.text.trim() },
           { headers: { "Content-Type": "application/json" } }
         );

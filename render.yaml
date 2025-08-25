@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: securechat
+    env: docker
+    rootDir: .
+    plan: free
+    dockerfilePath: backend/Dockerfile
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: ML_PORT
+        value: 5002
+      - key: PYTHON_PATH
+        value: python3
+      # Set these in the Render dashboard or here (avoid committing secrets)
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
